@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "2155699863",
+    "firebase_url": "https://carsmarketproject.firebaseio.com",
+    "project_id": "carsmarketproject",
+    "storage_bucket": "carsmarketproject.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:2155699863:android:ac4cb2c20becc798",
+        "android_client_info": {
+          "package_name": "com.example.lenovo.androidapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "2155699863-6tesnc2lg513df8qmr1bi24na4csmrbc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.lenovo.androidapp",
+            "certificate_hash": "531d604a7f13e0c949651a04906d5f1b7c44b89a"
+          }
+        },
+        {
+          "client_id": "2155699863-b9er42t3lnng7rkaqff3hqt31245tquf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDoAqfBgU5meKSC8zWcM51IJtlJ1XvEj0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "2155699863-b9er42t3lnng7rkaqff3hqt31245tquf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
