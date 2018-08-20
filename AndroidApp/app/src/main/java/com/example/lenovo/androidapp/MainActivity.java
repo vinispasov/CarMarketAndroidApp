@@ -96,36 +96,30 @@ public class MainActivity extends AppCompatActivity implements Navigator {
                         final int[] counter = new int[1];
 
                        mCarsListFragment.getmCarsRepository().getAll(generations -> {
+                           Generation foundGeneration = null;
                             for (Generation generation : generations) {
                                 if (identifier==2&&generation.name.equals("First Generation")){
-                                    counter[0] =1;
-                                    Intent intent=new Intent(MainActivity.this,MainActivity.class);
-                                    intent.putExtra("GENERATION",generation);
-                                    startActivity(intent);
+                                    foundGeneration = generation;
                                     break;
                                 }
                                 else if (identifier==3&&generation.name.equals("Second Generation")){
-                                    counter[0] =1;
-                                    Intent intent=new Intent(MainActivity.this,MainActivity.class);
-                                    intent.putExtra("GENERATION",generation);
-                                    startActivity(intent);
+                                    foundGeneration = generation;
                                     break;
                                 }
                                 else if (identifier==4&&generation.name.equals("Third Generation")){
-                                    counter[0] =1;
-                                    Intent intent=new Intent(MainActivity.this,MainActivity.class);
-                                    intent.putExtra("GENERATION",generation);
-                                    startActivity(intent);
+                                    foundGeneration = generation;
                                     break;
                                 }
                                  else if (identifier==5&&generation.name.equals("Fourth Generation")){
-                                    counter[0] =1;
-                                    Intent intent=new Intent(MainActivity.this,MainActivity.class);
-                                    intent.putExtra("GENERATION",generation);
-                                    startActivity(intent);
+                                    foundGeneration = generation;
                                     break;
                                 }
                             }
+                           counter[0] =1;
+                           Intent intent=new Intent(MainActivity.this,MainActivity.class);
+                           intent.putExtra("GENERATION",foundGeneration);
+                           MainActivity.this.finish();
+                           startActivity(intent);
                         });
                        if (counter[0]==1){
                            return true;

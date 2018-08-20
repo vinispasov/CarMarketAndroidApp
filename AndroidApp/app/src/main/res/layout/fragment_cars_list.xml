@@ -6,9 +6,29 @@
     android:layout_height="match_parent"
     tools:context=".CarsListFragment">
 
-    <ListView
-        android:id="@+id/cars_list"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:id="@+id/progress_bar_form"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ProgressBar
+                android:layout_width="75dp"
+                android:layout_height="75dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Loading..."/>
+        </LinearLayout>
+
+        <ListView
+            android:visibility="gone"
+            android:id="@+id/cars_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </RelativeLayout>
 
 </FrameLayout>

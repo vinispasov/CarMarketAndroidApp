@@ -2,7 +2,6 @@ package com.example.lenovo.androidapp;
 
 
 import android.app.Fragment;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,9 +16,6 @@ import com.example.lenovo.androidapp.car_brands.Generation;
 import com.example.lenovo.androidapp.car_brands.repositories.FirebaseRepository;
 import com.example.lenovo.androidapp.car_brands.repositories.base.Repository;
 
-import java.util.ArrayList;
-import java.util.Collections;
-
 
 /**
  * A simple {@link Fragment} subclass.
@@ -33,7 +29,7 @@ public class CarsListFragment extends Fragment implements AdapterView.OnItemClic
     private Repository<Generation> mCarsRepository;
     private Generation currentGeneration;
     private Counter mCounter;
-
+    private View mProgressBarForm;
 
 
     public CarsListFragment() {
@@ -46,6 +42,7 @@ public class CarsListFragment extends Fragment implements AdapterView.OnItemClic
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
             View view= inflater.inflate(R.layout.fragment_cars_list, container, false);
+            mProgressBarForm = view.findViewById(R.id.progress_bar_form);
 
 
 
@@ -57,12 +54,15 @@ public class CarsListFragment extends Fragment implements AdapterView.OnItemClic
         mCarsListView.setAdapter(mCarsAdapter);
 
         mCarsListView.setOnItemClickListener(this);
+        mCarsRepository = new FirebaseRepository<>(Generation.class);
 
         //default Activity load
         if (currentGeneration==null) {
             Counter.setCounter(1);
-            mCarsRepository = new FirebaseRepository<>(Generation.class);
+
             mCarsRepository.getAll(generations -> {
+                // Hide Loader
+                hideLoader();
                 for (Generation generation : generations) {
                     if (generation.name.equals("First Generation")) {
                         mBrandsList.addAll(generation.brands);
@@ -73,11 +73,17 @@ public class CarsListFragment extends Fragment implements AdapterView.OnItemClic
             });
         }
         else{
+            hideLoader();
             mBrandsList.addAll(currentGeneration.brands);
             mCarsAdapter.addAll(currentGeneration.getCarBrandsName());
         }
 
         return view;
+    }
+
+    private void hideLoader() {
+        mProgressBarForm.setVisibility(View.GONE);
+        mCarsListView.setVisibility(View.VISIBLE);
     }
 
     @Override
